@@ -1,0 +1,50 @@
+package com.example.abelsproject;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private long startTime;
+    private long elapsedTime;
+    private boolean isRunning;
+
+    private Button startButton;
+    private Button endButton;
+    private TextView timeTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        startButton = findViewById(R.id.start_button);
+        endButton = findViewById(R.id.end_button);
+        timeTextView = findViewById(R.id.time_textview);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startTime = System.currentTimeMillis();
+                elapsedTime = 0;
+                isRunning = true;
+                timeTextView.setText("0 ms");
+            }
+        });
+
+        endButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isRunning) {
+                    elapsedTime = System.currentTimeMillis() - startTime;
+                    isRunning = false;
+                }
+                timeTextView.setText(elapsedTime + " ms");
+            }
+        });
+    }
+}
