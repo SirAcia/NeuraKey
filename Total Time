@@ -1,0 +1,19 @@
+// Define the time values
+
+let hours = 2;
+        let minutes = 30;
+        let seconds = 45;
+        let milliseconds = 750;
+
+// Calculate the total time in milliseconds
+        let totalMilliseconds = ((hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000) + milliseconds);
+
+// Convert milliseconds to hours, minutes, seconds, and milliseconds
+        let totalSeconds = Math.floor(totalMilliseconds / 1000);
+        let finalHours = Math.floor(totalSeconds / 3600);
+        let finalMinutes = Math.floor((totalSeconds % 3600) / 60);
+        let finalSeconds = Math.floor(totalSeconds % 60);
+        let finalMilliseconds = totalMilliseconds % 1000;
+
+// Display the total time
+        console.log(`Total time: ${finalHours} hours, ${finalMinutes} minutes, ${finalSeconds} seconds, and ${finalMilliseconds} milliseconds.`);
